@@ -1,11 +1,12 @@
 'use strict';
 const http = require('http');
-const config = require('../config');
 
-function start(app) {
+function start(app, config) {
   const server = http.createServer(app);
-  server.listen(config.server.port, function () {
-    console.log('Server listening on ' + config.server.hostname + ':' + config.server.port);
+
+  server.listen(config.port, function () {
+    console.log(`Running Environment ${process.env.NODE_ENV}`);
+    console.log(`Server listening on ${config.protocol}://${config.hostname}:${config.port}`);
   });
 }
 
